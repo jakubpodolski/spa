@@ -13,6 +13,10 @@ class Person {
   }
 }
 
+let y = new Person('Jan', 'Nowak');
 let x = new Person('Jakub', 'Podolski');
 console.log(x.toString());
 console.log(x.initials());
+
+console.log(y.toString());
+console.log(y.initials());
