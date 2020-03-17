@@ -5,9 +5,28 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
+		<div id="tableContainer">
+
+		</div>
+		<script>	
+			const renderTable = () => (`
+				<table border='1'>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>4</td>
+					</tr>
+				</table>
+			`)
+
+			const getElement = () => {
+				document.getElementById("tableContainer").innerHTML = renderTable();
+			}
+						
+			document.onload = getElement();
+	</script>
 	</body>
 </html>

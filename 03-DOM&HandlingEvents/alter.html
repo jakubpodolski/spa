@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body ondblclick="changeBG(this)">
+		<h1 onclick="addText(this)">Another Brick in the Wall</h1>
+		<h3 onclick="addDescription()">Pink Floyd</h3>
+		<p onclick="changeStyle(this)" oncontextmenu="alert('Copyrigths')">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,12 +15,35 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p id="desc" style="visibility: hidden;" onclick="addPicture(this)">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
 		
 		<script>
-			// a JavaScript code here ...
+			function addText(el) {
+				el.innerText += " (Part 2)";
+			};
+
+			function addDescription () {
+				document.getElementById("desc").style.visibility = "visible";
+			};
+
+			function changeStyle(el) {
+				console.log(el)
+				el.style.fontStyle="italic";
+			};
+
+			function changeBG(el) {
+				el.style.background = "yellow"
+			}
+
+			function addPicture(el) {
+				let img = document.createElement("img")
+				img.src = 'https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg'
+				img.alt = "band"
+
+				document.body.appendChild(img)
+			}
 			
 		</script>
 	</body>
