@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rates</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>Rates</h1>
+    <p id="eur"></p>
+    <p id="usd"></p>
+    <p id="gbp"></p>
+
+		<script>
+			function getJsonData() {
+        let url = `http://api.nbp.pl/api/exchangerates/rates/a/`
+        let currencies = ['eur', 'usd', 'gbp']
+        for (let currency of currencies) {
+          fetch(`${url}/${currency}/`)
+            .then(res => res.json())
+            .then(res => res.rates[0].mid)
+            .then(res => document.getElementById(currency).innerText = `${currency} ${res}`)
+        }
+      }
+      window.onload = getJsonData
+		</script>
+
+	</body>
+</html>

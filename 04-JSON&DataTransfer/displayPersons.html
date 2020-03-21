@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Student</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<input onclick="getJsonData()" type="button" value="Display peoples data">		
+
+		<script>
+			function getJsonData() {
+        
+				let req = new XMLHttpRequest()
+				req.overrideMimeType("application/json");
+				req.onreadystatechange = function() {
+					if (this.readyState === 4 && this.status === 200) {
+            let data = JSON.parse(this.responseText)
+						for (let person of data) {
+              let element = document.createElement('p')
+              element.innerText = `${person.name} ${person.surname.toUpperCase()}, ${person.country} `
+              document.body.appendChild(element)
+            }
+					}
+				}
+				req.open('GET', "./people.json")
+				req.send()
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <canvas id="myChart"></canvas>
+    <script>
+      let ctx = document.getElementById('myChart').getContext('2d');
+      
+      async function getData(){
+        await fetch('http://api.nbp.pl/api/cenyzlota/last/10/')
+        .then(res => res.json())
+        .then(res => {
+          let chart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: res.map(x => x.data),
+                datasets: [{
+                    label: 'Price',
+                    data: res.map(x => x.cena)
+                }]
+              },
+              options: {}
+          });
+        })
+      }
+      window.onload = getData
+    </script>
+  </body>
+</html>
