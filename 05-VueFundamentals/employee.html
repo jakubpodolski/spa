@@ -4,19 +4,41 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+  <div id="app">
+    <h1 class='title'>Employee record</h1>
+    <p>Name 1: {{employee1.name1}}</p>
+    <p v-show="employee1.name2">Name 2: {{employee1.name2}}</p>
+    <p>Surname: {{employee1.surname}}</p>
+    <p v-if="employee1.foreigner">Nationality: {{employee1.nationality}}</p>
+    <p v-else="employee1.foreigner">Pesel: {{employee1.pesel}}</p>
+    <p>Address: {{employee1.address}}</p>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        name1: 'Adam',
-        name2: 'Jan',
-        surname: 'Majewski',
-        foreigner: false,
-        nationality: 'Polish',
-        pesel: '92021708229',
-        address: 'ul. Szeroka 3, Kraków',
-    });
+        employee1: {
+          name1: 'John',
+          surname: 'Brown',
+          foreigner: true,
+          nationality: 'USA',
+          address: 'Holland Drive 4, Chicago',
+        },
+        employee2: {
+          name1: 'John',
+          surname: 'Brown',
+          foreigner: true,
+          nationality: 'USA',
+          address: 'Holland Drive 4, Chicago',
+        },
+      }
+    })
   </script>
-
+  <style>
+    .title {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  </style>
 </body>
 </html>

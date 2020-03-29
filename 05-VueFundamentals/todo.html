@@ -3,6 +3,14 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+<div id='app'>
+  <h1>DO WYKONANIA</h1>
+  <ol>
+    <li v-for="item in sortedList">
+      {{item}}
+    </li>
+  </ol>
+</div>
 <body>
   <script>
     var app = new Vue({
@@ -13,6 +21,12 @@
           'Feed cat',
           'Pay cable bill',
           'Go shopping'
+        ]
+      },
+      computed: {
+        sortedList: function () {
+          return this.todo.sort();
+        }
       }
     });
   </script>
