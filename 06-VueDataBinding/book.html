@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <span>Book:</span>
+    <input type="text" v-model="book">  
+    <span>Author:</span>
+    <input type="text" v-model="author">  
+    <button @click=console>Save</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        book: '',
+        author: ''
+      },
+      methods: {
+        console: function () {
+          console.log(this.book, this.author)
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

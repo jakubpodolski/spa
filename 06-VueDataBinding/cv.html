@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <form>
+      <label for="name">Name:</label>
+      <input id="name" type="text" v-model="name"><br>
+      <label for="surname">Surname:</label>
+      <input id="surname" type="text" v-model="surname"><br>
+      <label for="gender">Gender:</label>
+      <select id="gender" v-model="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="other">other</option>
+      </select><br>
+      <span>Skills: </span><br>
+      <span>Computer knowladge</span>
+      <input type="checkbox" value="math" v-model='skills'><br>
+      <span>Drivers licence</span>
+      <input type="checkbox" value="pwa" v-model='skills'><br>
+      <span>creativity</span>
+      <input type="checkbox" value="Creativity" v-model='skills'><br>
+      <span>Works well in the team</span>
+      <input type="checkbox" value="ai" v-model='skills'><br>
+    </form>
+    <button @click=save>
+      Save
+    </button>
+    <button @click=read>
+      Read
+    </button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        surname: '',
+        gender: '',
+        education: '',
+        skills: []
+      },
+      methods: {
+        save: function() {
+          localStorage.setItem("cv", JSON.stringify({
+            name: this.name,
+            surname: this.surname,
+            gender: this.gender,
+            education: this.education,
+            skills: this.skills
+          }))
+        },
+        read: function() {
+          let cv = JSON.parse(localStorage.getItem("cv"))
+          console.log(cv)
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <span>math</span>
+    <input type="checkbox" value="math" v-model='selected'><br>
+    <span>pwa</span>
+    <input type="checkbox" value="pwa" v-model='selected'><br>
+    <span>spa</span>
+    <input type="checkbox" value="spa" v-model='selected'><br>
+    <span>ai</span>
+    <input type="checkbox" value="ai" v-model='selected'><br>
+    <span>ml</span>
+    <input type="checkbox" value="ml" v-model='selected'><br>
+    <span>Courses {{len}}</span>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        selected: [],
+      },
+      computed: {
+        len: function () {
+          return this.selected.length
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
