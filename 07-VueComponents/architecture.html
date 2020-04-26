@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>von Neumann architecture</h1>
+    <div v-for='el in elements'>
+      <Display :element="el"></Display>
+    </div>
+  </div>
+</body>
+
+<script>
+  Vue.component('Display', {
+    props: ['element'],
+    template: `
+    <div>
+      <p>{{ element }}</p>
+    </div>
+    `
+  })
+
+  new Vue({
+    el: '#app',
+    data: {
+      elements: ['Processing unit', 'Control unit', 'Memory', 'External mass storage', 'I/O device']
+    }
+  });
+</script>
+</html>

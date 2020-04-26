@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-for='el in elements'>
+      <Display :element="el"></Display>
+    </div>
+  </div>
+</body>
+
+<script>
+  Vue.component('Display', {
+    props: ['element'],
+    methods: {
+      toBin: function() {
+        return this.element.toString(2);
+      }
+    },
+    template: `
+    <div>
+      <p>{{ toBin() }}</p>
+    </div>
+    `
+  })
+
+  new Vue({
+    el: '#app',
+    data: {
+      elements: [8, 170, 204, 3855]
+    }
+  });
+</script>
+</html>

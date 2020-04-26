@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>Current Rates</p>
+    <div v-for='el in data'>
+      <Display :current="el"></Display>
+    </div>
+  </div>
+  <script>
+     Vue.component('Display', {
+        props: ['current'],
+        template: `
+        <div>
+          <span>{{current}}</span>
+        </div>
+        `
+      })
+
+    new Vue({
+      el: '#app',
+      data: function() {
+        return {
+          data: []
+        }
+      },
+      created: function() {
+          let url = `http://api.nbp.pl/api/exchangerates/rates/a/`
+          let currencies = ['eur', 'usd', 'gbp']
+          for (let currency of currencies) {
+            fetch(`${url}/${currency}/`)
+              .then(res => res.json())
+              .then(res => res.rates[0].mid)
+              .then(res => this.data.push(res))
+          }
+        }
+    });
+  </script>
+
+</body>
+</html>

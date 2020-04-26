@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <Counter />
+  </div>
+  <script>
+     Vue.component('Counter', {
+        data: function() {
+          return {
+          current: 0
+        }
+        },
+        methods: {
+          inc: function() {
+            this.current++
+          },
+          dec: function() {
+            this.current--
+          },
+        },
+        template: `
+        <div>
+          <span>{{current}}</span>
+          <button @click=inc>
+            INC
+          </button>
+          <button @click=dec>
+            DEC
+          </button>
+        </div>
+        `
+      })
+
+    new Vue({
+      el: '#app',
+    });
+  </script>
+
+</body>
+</html>

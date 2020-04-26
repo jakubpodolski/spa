@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <Movie title="Dark Knight" director="Nolan" year="2014"></Movie>
+    <Movie title="Dunkirk" director="Nolan" year="2019"></Movie>
+    <Movie title="Dunkirk: Reloaded" director="Nolan" year="2065"></Movie>
+  </div>
+</body>
+
+<script>
+  Vue.component('Movie', {
+    props: ['title', 'director', 'year'],
+    template: `
+    <div>
+      <h1>{{ title }}</h1>
+      <h3>{{ director }}</h3>
+      <p>{{ year }}</p>
+    </div>
+    `
+  })
+
+  new Vue({
+    el: '#app',
+  });
+</script>
+</html>
